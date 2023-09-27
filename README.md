@@ -1,3 +1,3 @@
 # FazEncrypter
 
-Advanced encoder. Good uses.
+Advanced file encrypter. Good uses.
