@@ -1,3 +1,3 @@
 # FazEncrypter
 
-Advanced file encrypter. Good uses.
+Cross platform advanced file encrypter. Good uses.
