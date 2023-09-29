@@ -1,7 +1,5 @@
 # -*- coding:utf-8 -*-
-
 from os import mkdir,path,system,name,remove,urandom
-from webbrowser import open_new_tab
 from time import sleep
 from shutil import rmtree
 #from numpy import array,nditer
@@ -21,7 +19,6 @@ def opened():
   |  _/ _` |_  / '_ \ / _ \/ _` | '__| |  __| '_ \| __/ _ \ '__| __/ _` | | '_ \| '_ ` _ \ / _ \ '_ \| __|
   | || (_| |/ /| |_) |  __/ (_| | |    | |__| | | | ||  __/ |  | || (_| | | | | | | | | | |  __/ | | | |_
   \_| \__,_/___|_.__/ \___|\__,_|_|    \____/_| |_|\__\___|_|   \__\__,_|_|_| |_|_| |_| |_|\___|_| |_|\__|
-William AFTON - Sami Lütfi YILDIZ
 """.format(f.LIGHTRED_EX))
 if name=="nt":
     kit_adres="C:/kits/"
@@ -123,16 +120,22 @@ while run:
                         html_file.write("<li>"+c+" için kit <strong style=\"color:red;\">false</strong>.</li>")
                 html_file.write("</ul>")
                 html_file.close()
-                open_new_tab("control.html")
-                sleep(1.3)
+                if name == "nt":
+                    system("start control.html")
+                elif name == "posix":
+                    system("xdg-open dosya.html")
+                sleep(1.1)
                 remove("control.html")
                 print(f.GREEN+"\nKontrolünüz başarıyla tamamlandı.\n")
             else:
                 html_file.write("<li><strong>Kits</strong> klasörü <strong style=\"color:red;\">false</strong>.</li>")
                 html_file.write("</ul><br>")
                 html_file.close()
-                open_new_tab("control.html")
-                sleep(1.2)
+                if name == "nt":
+                    system("start control.html")
+                elif name == "posix":
+                    system("xdg-open dosya.html")
+                sleep(1.1)
                 remove("control.html")
                 print(f.GREEN+"\nKontrolünüz başarıyla tamamlandı.\n")
         except:
@@ -145,7 +148,7 @@ while run:
         try:
             if path.exists(fn):
                 sifrelenmis=b""
-                rf=open(fn,"r").read()
+                rf=open(fn,"r",encoding="utf-8").read()
                 if len(rf)>=150600:
                     print(f.LIGHTRED_EX+"\nDosya boyutu çok büyük. Bazı sorunlar çıkabilir veya dosyanız çok geç şifrelenebilir.")
                     end_qu=str(input(f.LIGHTBLACK_EX+"\nEminmisin(Y or N) >"+f.LIGHTBLUE_EX))
@@ -234,7 +237,7 @@ while run:
                     if end_qu.lower()=="y" or end_qu.lower()=="yes":
 
                         uzanti=str(input(f.LIGHTBLACK_EX+"Yeni dosyanın uzantısı : "+f.LIGHTBLUE_EX))
-                        ef=open(path.splitext(df)[0]+uzanti,"w")# cozulmus dosya
+                        ef=open(path.splitext(df)[0]+uzanti,"w",encoding="utf-8")# cozulmus dosya
                         check_rf=rf
 
                         for c in charlist:
@@ -272,7 +275,6 @@ while run:
                         else:
                             print(f.LIGHTRED_EX+"\nKit hatası.")
                             break
-
                     if check_rf == rf:
                         print(f.LIGHTRED_EX+"\nDeşifreleme sonucu bir şey değişmedi. Eski kitleriniz silinmiş olabilir!")
                         input()
